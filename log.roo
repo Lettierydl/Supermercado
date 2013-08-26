@@ -1,75 +1,53 @@
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-13 11:16:45
-project --topLevelPackage br.com.mercadinho --projectName Mercadinho --java 7 --packaging JAR
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-13 11:16:57
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-13 11:17:00
-jpa setup --provider HIBERNATE --database HYPERSONIC_PERSISTENT 
-entity jpa --class br.com.mercadinho.model.Telefone
-field string --fieldName ddd --notNull true --sizeMax 2 --sizeMin 2 --regexp [0-9]*
-field string --fieldName telefone --sizeMax 8 --sizeMin 8 --regexp [0-9]*
-field string --fieldName operadora
-entity jpa --class ~.model.pessoas.Endereco
-field string --fieldName cidade --notNull true --sizeMin 2
-field string --fieldName rua --notNull true --sizeMin 2
-field string --fieldName bairro --notNull true --sizeMin 2
-field string --fieldName numero --notNull true --sizeMin 2 --regexp [0-9]*
-field string --fieldName cep --notNull true --sizeMin 8 --sizeMax 8 --regexp [0-9]*
-enum type --class ~.model.enums.UF
-interface --class ~.model.pessoas.Pessoa
-field string --fieldName nome --sizeMin 2 --notNull true
-// [failed] field reference --fieldName telefone --type ~.model.Telefone
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-13 12:06:49
-// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-13 12:32:27
-entity jpa --class ~.model.pessoas.Pessoa --abstract 
-field string --fieldName nome --sizeMin 2 --notNull true --regexp [a-z]*
-field reference --fieldName endereco --type ~.model.pessoas.Endereco
-entity jpa --class ~.model.pessoas.Telefone
-entity jpa --class ~.model.pessoas.Telefone
-field string --fieldName ddd --notNull true --sizeMax 2 --sizeMin 2 --regexp [0-9]*
-field string --fieldName telefone --sizeMax 8 --sizeMin 8 --regexp [0-9]*
-field string --fieldName operadora
-focus --class ~.model.pessoas.Pessoa
-// [failed] field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality ONE_TO_MANY 
-field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality MANY_TO_ONE 
-// [failed] field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality ONE_TO_MANY 
-// [failed] field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality MANY_TO_MANY 
-// [failed] field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality ONE_TO_ONE 
-field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality ONE_TO_ONE 
-// [failed] field reference --fieldName telefones --type ~.model.pessoas.Telefone --cardinality ONE_TO_MANY 
-field set --fieldName telefones --type ~.model.pessoas.Telefone --cardinality 
-field set --fieldName telefones --type ~.model.pessoas.Telefone --cardinality ONE_TO_MANY 
-entity jpa --class ~.model.pessoas.Cliente
-entity jpa --class ~.model.pessoas.Cliente --extends ~.model.pessoas.Pessoa
-field number --fieldName debito --type double --notNull true
-field string --fieldName cpf --sizeMin 11 --sizeMax 11 --regexp [0-9]*
-field date --fieldName dataDeNascimento --type java.util.Date
-entity jpa --class ~.model.pessoas.Dependente --extends ~.model.pessoas.Pessoa
-entity jpa --class ~.model.pessoas.Dependente
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-24 15:44:16
+project --projectName Supermercado --topLevelPackage br.com.towl
+jpa setup --provider ECLIPSELINK --database HYPERSONIC_IN_MEMORY
+interface --class br.com.towl.pessoas.Pessoa
+field string --fieldName nome --notNull true --sizeMin 2
+entity jpa --class Telefone
+field string --fieldName ddd --sizeMin 2 --sizeMax 3
+field string --fieldName telefone --sizeMin 8 --sizeMax 9
+field string --fieldName operadora --sizeMin 2
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-24 21:09:14
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-24 21:10:45
+entity jpa --class ~.pessoas.Endereco
+field string --fieldName rua --notNull true --sizeMin 2 
+field string --fieldName numero --sizeMin 1 --sizeMax 10
+field string --fieldName bairro --sizeMin 2 
+fiel string --fieldName cidade --sizeMin 2
+field string --fieldName cep --sizeMin 8 --sizeMax 9
+entity jpa --class ~.pessoas.Cliente --implements ~.pessoas.Pessoa
+// [failed] field number --fieldName debito --type double --decimalMin 0 --digitsFraction 2
+// [failed] field number --fieldName debito --type double --digitsFraction 2 --notNull true
+field number --fieldName debito --type double --digitsInteger 7  --digitsFraction 2 --notNull true
+fiel string --fieldName cpf --sizeMin 11 --sizeMax 14
+field date --fieldName dataDeNascimento --type java.util.Calendar --dateFormat SHORT --dateTimeFormatPattern  "dd-MM-yyyy"
+focus --class ~.pessoas.Pessoa
+field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY 
+// [failed] field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_MANY
+field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_ONE 
+entity jpa --class ~.pessoas.Dependente
 field string --fieldName nome --notNull true
-focus --class ~.model.pessoas.Cliente
-field set --fieldName dependentes --type ~.model.pessoas.Dependente --cardinality ONE_TO_MANY 
-enum type --class ~.model.enums.TipoDeFuncionario
-enum constant --name Administrador
-enum constant --name OperadorDeCaixa
-// [failed] enum type --class ~.model.enums.InOut
-enum type --class ~.model.enums.InOut --permitReservedWords 
-// [failed] enum constant --name In
-enum constant --name In --permitReservedWords 
-enum constant --name Out --permitReservedWords 
-entity jpa --class ~.model.pessoas.Registro
-enum type --class ~.model.enums.TipoDeResgistro 
-enum type --class ~.model.enums.TipoDeRegistro
-enum constant --name Entrada
-enum constant --name Saida
-focus --class ~.model.pessoas.Registro
-// [failed] field reference --fieldName tipo --type ~.model.enums.TipoDeRegistro
-field enum --fieldName tipo --type ~.model.enums.TipoDeRegistro
-// [failed] field date --fieldName data --type java.util.Date --dateFormat MEDIUM --dateTimeFormatPattern dd-MM-yyyy
-// [failed] field date --fieldName data --type java.util.Date --dateFormat MEDIUM --dateTimeFormatPattern "dd-MM-yyyy"
-field date --fieldName dia --type java.util.Date --dateFormat MEDIUM --dateTimeFormatPattern "dd-MM-yyyy"
-entity jpa --class ~.model.pessoas.Funcionario --extends ~.model.pessoas.Pessoa
-field string --fieldName senha --notNull true --sizeMin 3
-field enum --fieldName tipo --type ~.model.enums.TipoDeFuncionario
-field string --fieldName cpf --sizeMax 11 --sizeMin 11 --unique --notNull true --regexp [0-9]*
-field set --fieldName registros --type ~.model.pessoas.Registro --cardinality ONE_TO_MANY 
-entity jpa --class ~.model.pessoas.Representante --extends ~.model.pessoas.Pessoa
-field string --fieldName razaoSocialDaEmpresa --sizeMin 2
+focus --class ~.pessoas.Cliente
+field list --fieldName dependentes --type ~.pessoas.Dependente --cardinality ONE_TO_MANY 
+enum type --class ~.pessoas.TipoDeFuncionario
+enum constant --name Caixa
+enum constant --name Supervisor
+entity jpa --class ~.pessoas.Funcionario
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-24 21:54:43
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-24 21:55:00
+entity jpa --class ~.pessoas.Funcionario --implements ~.pessoas.Pessoa
+field string --fieldName senha
+field enum --fieldName tipoDeFuncionario --type ~.pessoas.TipoDeFuncionario --notNull true --enumType STRING
+field string --fieldName cpf --sizeMin 11 --sizeMax 14
+entity jpa --class ~.pessoas.Representante --implements ~.pessoas.Pessoa
+field string --fieldName razaoSocialDaEmpresa --notNull true --sizeMin 2
+entity jpa --class br.com.towl.estoque.Promocao
+field date --fieldName dataDeInicio --type java.util.Calendar --dateFormat MEDIUM 
+field number --fieldName valorDoDesconto --type double --decimalMin 0 --digitsInteger 7 --digitsFraction 2
+field number --fieldName quantidadeMaximaDeVendas --type double 
+field number --fieldName quantidadeJaVendida --type double 
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-24 22:21:33
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 15:54:25

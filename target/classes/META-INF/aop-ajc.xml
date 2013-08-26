@@ -1,9 +1,0 @@
-<aspectj>
-<aspects>
-<aspect name="br.com.mercadinho.model.Telefone_Roo_Jpa_Entity"/>
-<aspect name="br.com.mercadinho.model.Telefone_Roo_Jpa_ActiveRecord"/>
-<aspect name="br.com.mercadinho.model.Telefone_Roo_Configurable"/>
-<aspect name="br.com.mercadinho.model.Telefone_Roo_ToString"/>
-</aspects>
-</aspectj>
-
