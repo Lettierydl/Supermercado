@@ -100,3 +100,41 @@ field enum --fieldName formaDePagamento --type ~.vendas.FormaDePagamento --enumT
 field list --fieldName linhasDaVenda --type ~.vendas.LinhaDaVenda --cardinality ONE_TO_MANY
 exit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-26 21:51:39
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-27 09:16:50
+focus --class ~.estoque.Produto
+finder list
+finder add --finderName findProdutoesByDescricaoLike
+finder list 
+finder add --finderName findProdutoesByCategoria
+finder list 
+finder add findProdutoesByCodigoDeBarrasLike
+finder list 
+finder add --finderName findProdutoesByFabricante
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-27 09:34:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-27 10:26:43
+focus --class ~.estoque.Promocao
+finder list 
+focus --class ~.estoque.CategoriaProduto
+// [failed] finder list 
+focus --class ~.pessoas.Cliente
+finder list 
+focus --class ~.pessoas.Pessoa
+// [failed] finder list 
+focus --class ~.pessoas.Cliente
+finder list 
+focus --class ~.pessoas.Funcionario
+finder list 
+focus --class ~.vendas.Venda
+finder list 
+finder add findVendasByCliente
+finder list 
+finder add findVendasByDiaBetween
+finder list 
+finder add findVendasByDiaGreaterThanEquals
+finder list 
+finder add findVendasByFormaDePagamento
+finder list 
+finder add findVendasByFuncionario
+exit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-27 10:46:31
