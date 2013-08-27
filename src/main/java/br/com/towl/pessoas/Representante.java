@@ -15,4 +15,5 @@ public class Representante implements Pessoa {
     @NotNull
     @Size(min = 2)
     private String razaoSocialDaEmpresa;
+    
 }

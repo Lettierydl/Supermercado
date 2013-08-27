@@ -13,15 +13,15 @@ public interface Pessoa {
      */
     @NotNull
     @Size(min = 2)
-    private String nome;
+    String nome = null;
 
     /**
      */
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Telefone> telefones = new ArrayList<Telefone>();
+    List<Telefone> telefones = new ArrayList<Telefone>();
 
     /**
      */
     @OneToOne
-    private Endereco endereco;
+    Endereco endereco = null;
 }
