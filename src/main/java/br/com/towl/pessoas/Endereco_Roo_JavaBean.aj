@@ -4,6 +4,7 @@
 package br.com.towl.pessoas;
 
 import br.com.towl.pessoas.Endereco;
+import br.com.towl.pessoas.UF;
 
 privileged aspect Endereco_Roo_JavaBean {
     
@@ -45,6 +46,14 @@ privileged aspect Endereco_Roo_JavaBean {
     
     public void Endereco.setCep(String cep) {
         this.cep = cep;
+    }
+    
+    public UF Endereco.getUf() {
+        return this.uf;
+    }
+    
+    public void Endereco.setUf(UF uf) {
+        this.uf = uf;
     }
     
 }

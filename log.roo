@@ -138,3 +138,33 @@ finder list
 finder add findVendasByFuncionario
 exit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-27 10:46:31
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-29 15:03:07
+enum type --class ~.pessoas.UF
+enum constant --name AC
+enum constant --name AL
+enum constant --name AM
+enum constant --name AP
+enum constant --name BA
+enum constant --name CE
+enum constant --name DF
+enum constant --name MA
+enum constant --name MG
+enum constant --name MS
+enum constant --name MT
+enum constant --name PA
+enum constant --name PB
+enum constant --name PE
+enum constant --name PI
+enum constant --name PR
+enum constant --name RJ
+enum constant --name RN
+enum constant --name RO
+enum constant --name RR
+enum constant --name RS
+enum constant --name SC
+enum constant --name SE
+enum constant --name SP
+enum constant --name ES
+enum constant --name TO --permitReservedWords
+focus --class ~.pessoas.Endereco
+field enum --fieldName uf --type ~.pessoas.UF --enumType STRING 
