@@ -3,7 +3,10 @@
 
 package br.com.towl.pessoas;
 
+import br.com.towl.pessoas.Endereco;
 import br.com.towl.pessoas.Representante;
+import br.com.towl.pessoas.Telefone;
+import java.util.List;
 
 privileged aspect Representante_Roo_JavaBean {
     
@@ -13,6 +16,30 @@ privileged aspect Representante_Roo_JavaBean {
     
     public void Representante.setRazaoSocialDaEmpresa(String razaoSocialDaEmpresa) {
         this.razaoSocialDaEmpresa = razaoSocialDaEmpresa;
+    }
+    
+    public String Representante.getNome() {
+        return this.nome;
+    }
+    
+    public void Representante.setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public Endereco Representante.getEndereco() {
+        return this.endereco;
+    }
+    
+    public void Representante.setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    public List<Telefone> Representante.getTelefones() {
+        return this.telefones;
+    }
+    
+    public void Representante.setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
     
 }

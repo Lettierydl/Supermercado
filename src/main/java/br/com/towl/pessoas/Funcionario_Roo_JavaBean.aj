@@ -3,10 +3,29 @@
 
 package br.com.towl.pessoas;
 
+import br.com.towl.pessoas.Endereco;
 import br.com.towl.pessoas.Funcionario;
+import br.com.towl.pessoas.Telefone;
 import br.com.towl.pessoas.TipoDeFuncionario;
+import java.util.List;
 
 privileged aspect Funcionario_Roo_JavaBean {
+    
+    public String Funcionario.getNome() {
+        return this.nome;
+    }
+    
+    public void Funcionario.setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    public Endereco Funcionario.getEndereco() {
+        return this.endereco;
+    }
+    
+    public void Funcionario.setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     
     public String Funcionario.getSenha() {
         return this.senha;
@@ -30,6 +49,14 @@ privileged aspect Funcionario_Roo_JavaBean {
     
     public void Funcionario.setCpf(String cpf) {
         this.cpf = cpf;
+    }
+    
+    public List<Telefone> Funcionario.getTelefones() {
+        return this.telefones;
+    }
+    
+    public void Funcionario.setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
     
 }

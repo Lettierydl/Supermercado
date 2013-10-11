@@ -15,7 +15,6 @@ import javax.validation.constraints.Digits;
 public class Promocao {
 
     /**
-     
      */
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")

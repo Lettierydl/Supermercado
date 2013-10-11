@@ -1,61 +1,73 @@
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-24 15:44:16
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-10-11 11:46:25
 project --projectName Supermercado --topLevelPackage br.com.towl
-jpa setup --provider ECLIPSELINK --database HYPERSONIC_IN_MEMORY
-interface --class br.com.towl.pessoas.Pessoa
-field string --fieldName nome --notNull true --sizeMin 2
-entity jpa --class Telefone
-field string --fieldName ddd --sizeMin 2 --sizeMax 3
-field string --fieldName telefone --sizeMin 8 --sizeMax 9
-field string --fieldName operadora --sizeMin 2
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-24 21:09:14
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-24 21:10:45
+jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
 entity jpa --class ~.pessoas.Endereco
 field string --fieldName rua --notNull true --sizeMin 2 
 field string --fieldName numero --sizeMin 1 --sizeMax 10
 field string --fieldName bairro --sizeMin 2 
 fiel string --fieldName cidade --sizeMin 2
 field string --fieldName cep --sizeMin 8 --sizeMax 9
-entity jpa --class ~.pessoas.Cliente --implements ~.pessoas.Pessoa
-// [failed] field number --fieldName debito --type double --decimalMin 0 --digitsFraction 2
-// [failed] field number --fieldName debito --type double --digitsFraction 2 --notNull true
+field string --fieldName nome --notNull true --sizeMin 2
+// [failed] field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY 
+field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_ONE 
 field number --fieldName debito --type double --digitsInteger 7  --digitsFraction 2 --notNull true
 fiel string --fieldName cpf --sizeMin 11 --sizeMax 14
 field date --fieldName dataDeNascimento --type java.util.Calendar --dateFormat SHORT --dateTimeFormatPattern  "dd-MM-yyyy"
-focus --class ~.pessoas.Pessoa
-field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY 
-// [failed] field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_MANY
+jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+entity jpa --class ~.pessoas.Endereco
+field string --fieldName rua --notNull true --sizeMin 2 
+field string --fieldName numero --sizeMin 1 --sizeMax 10
+field string --fieldName bairro --sizeMin 2 
+fiel string --fieldName cidade --sizeMin 2
+field string --fieldName cep --sizeMin 8 --sizeMax 9
+entity jpa --class ~.pessoas.Cliente
+field string --fieldName nome --notNull true --sizeMin 2
+// [failed] field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY 
 field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_ONE 
+field number --fieldName debito --type double --digitsInteger 7  --digitsFraction 2 --notNull true
+fiel string --fieldName cpf --sizeMin 11 --sizeMax 14
+field date --fieldName dataDeNascimento --type java.util.Calendar --dateFormat SHORT --dateTimeFormatPattern  "dd-MM-yyyy"
 entity jpa --class ~.pessoas.Dependente
 field string --fieldName nome --notNull true
 focus --class ~.pessoas.Cliente
-field list --fieldName dependentes --type ~.pessoas.Dependente --cardinality ONE_TO_MANY 
+field list --fieldName dependentes --type ~.pessoas.Dependente --cardinality ONE_TO_MANY
+// [failed] enum constant --name Caixa
+// [failed] enum constant --name Supervisor
 enum type --class ~.pessoas.TipoDeFuncionario
 enum constant --name Caixa
 enum constant --name Supervisor
 entity jpa --class ~.pessoas.Funcionario
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-24 21:54:43
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-24 21:55:00
-entity jpa --class ~.pessoas.Funcionario --implements ~.pessoas.Pessoa
+field string --fieldName nome --notNull true --sizeMin 2
+// [failed] field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY 
+field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_ONE 
 field string --fieldName senha
 field enum --fieldName tipoDeFuncionario --type ~.pessoas.TipoDeFuncionario --notNull true --enumType STRING
 field string --fieldName cpf --sizeMin 11 --sizeMax 14
-entity jpa --class ~.pessoas.Representante --implements ~.pessoas.Pessoa
+entity jpa --class ~.pessoas.Representante
 field string --fieldName razaoSocialDaEmpresa --notNull true --sizeMin 2
 entity jpa --class br.com.towl.estoque.Promocao
 field date --fieldName dataDeInicio --type java.util.Calendar --dateFormat MEDIUM 
 field number --fieldName valorDoDesconto --type double --decimalMin 0 --digitsInteger 7 --digitsFraction 2
 field number --fieldName quantidadeMaximaDeVendas --type double 
 field number --fieldName quantidadeJaVendida --type double 
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-24 22:21:33
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 15:54:25
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 16:13:27
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 16:15:25
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-26 16:21:27
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-26 16:21:44
+// [failed] field number --fieldName valorDoDesconto --type double --digitsInteger 7 --digitsFraction 2
+enum type --class ~.estoque.CategoriaProduto
+enum constant --name Alimentos
+enum constant --name Produtos_de_Limpeza
+enum constant --name Produtos_de_Higiene
+enum constant --name Bebidas_e_Sucos
+enum constant --name Produtos_de_Bazar
+enum constant --name Papelaria
+enum constant --name Utilidades_Domesticas
+focus --class ~.pessoas.Representante
+field string --fieldName nome --notNull true --sizeMin 2
+// [failed] field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY 
+field reference --fieldName endereco --type ~.pessoas.Endereco --cardinality ONE_TO_ONE 
+entity jpa --class br.com.towl.estoque.Promocao
+field date --fieldName dataDeInicio --type java.util.Calendar --dateFormat MEDIUM 
+field number --fieldName valorDoDesconto --type double --decimalMin 0 --digitsInteger 7 --digitsFraction 2
+field number --fieldName quantidadeMaximaDeVendas --type double 
+field number --fieldName quantidadeJaVendida --type double 
 enum type --class ~.estoque.CategoriaProduto
 enum constant --name Alimentos
 enum constant --name Produtos_de_Limpeza
@@ -65,7 +77,6 @@ enum constant --name Produtos_de_Bazar
 enum constant --name Papelaria
 enum constant --name Utilidades_Domesticas
 entity jpa --class ~.estoque.Produto
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-26 20:40:46
 field string --fieldName codigoDeBarras --sizeMax 13 --unique --notNull true
 field string --fieldName descricao --notNull true
 field number --fieldName valorDeCompra --type double --decimalMin 0 --digitsInteger 7 --digitsFraction 2 --value 0 --notNull true
@@ -89,7 +100,6 @@ field number --fieldName valorTotalDaLinhaSemDesconto --type double --transient 
 field number --fieldName valorTotalDaLinhaComDesconto --type double --transient --comment "Este valor serve apenas para demostracao na GUI"
 entity jpa --class ~.vendas.Venda
 field date --fieldName dia --type java.util.Calendar --dateFormat MEDIUM --dateTimeFormatPattern "dd-MM-yyyy hh:mm:ss" --notNull true
-// [failed] field reference --fieldName funcionario --type ~.pessoas.Funcionario --cardinality ONE_TO_MANY
 field reference --fieldName funcionario --type ~.pessoas.Funcionario --cardinality MANY_TO_ONE
 field reference --fieldName cliente --type ~.pessoas.Cliente --cardinality MANY_TO_ONE
 field reference --fieldName dependente --type ~.pessoas.Dependente --cardinality MANY_TO_ONE
@@ -98,9 +108,7 @@ field number --fieldName valorTotalDaVendaComDesconto --type double --digitsInte
 field number --fieldName valorTotalDaVendaSemDesconto --type double --digitsInteger 7 --digitsFraction 2 --value 0
 field enum --fieldName formaDePagamento --type ~.vendas.FormaDePagamento --enumType STRING --
 field list --fieldName linhasDaVenda --type ~.vendas.LinhaDaVenda --cardinality ONE_TO_MANY
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-26 21:51:39
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-27 09:16:50
+// [failed] field enum --fieldName formaDePagamento --type ~.vendas.FormaDePagamento --enumType STRING
 focus --class ~.estoque.Produto
 finder list
 finder add --finderName findProdutoesByDescricaoLike
@@ -110,21 +118,6 @@ finder list
 finder add findProdutoesByCodigoDeBarrasLike
 finder list 
 finder add --finderName findProdutoesByFabricante
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-27 09:34:22
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-27 10:26:43
-focus --class ~.estoque.Promocao
-finder list 
-focus --class ~.estoque.CategoriaProduto
-// [failed] finder list 
-focus --class ~.pessoas.Cliente
-finder list 
-focus --class ~.pessoas.Pessoa
-// [failed] finder list 
-focus --class ~.pessoas.Cliente
-finder list 
-focus --class ~.pessoas.Funcionario
-finder list 
 focus --class ~.vendas.Venda
 finder list 
 finder add findVendasByCliente
@@ -136,9 +129,6 @@ finder list
 finder add findVendasByFormaDePagamento
 finder list 
 finder add findVendasByFuncionario
-exit
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-27 10:46:31
-// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-29 15:03:07
 enum type --class ~.pessoas.UF
 enum constant --name AC
 enum constant --name AL
@@ -168,3 +158,38 @@ enum constant --name ES
 enum constant --name TO --permitReservedWords
 focus --class ~.pessoas.Endereco
 field enum --fieldName uf --type ~.pessoas.UF --enumType STRING 
+focus --class ~.pessoas.Cliente
+finder list 
+finder add findClientesByCpfEquals
+finder add findClientesByCpfLike
+finder add findClientesByDataDeNascimentoBetween
+finder add findClientesByNomeEquals
+finder add findClientesByNomeLike
+focus --class ~.pessoas.Funcionario
+finder list 
+finder add findFuncionariosByCpfEquals
+finder add findFuncionariosByCpfLike
+finder add findFuncionariosByNomeEquals
+finder add findFuncionariosByNomeLike
+finder add findFuncionariosByTipoDeFuncionario
+focus --class ~.pessoas.Representante
+finder list 
+finder add findRepresentantesByNomeEquals
+finder add findRepresentantesByNomeLike
+finder add findRepresentantesByRazaoSocialDaEmpresaEquals
+finder add findRepresentantesByRazaoSocialDaEmpresaLike
+focus --class ~.pessoas.Dependente
+finder list 
+finder add findDependentesByNomeEquals
+finder add findDependentesByNomeLike
+focus --class ~.pessoas.Dependente
+entity jpa --class Telefone
+field string --fieldName ddd --sizeMin 2 --sizeMax 3
+field string --fieldName telefone --sizeMin 8 --sizeMax 9
+field string --fieldName operadora --sizeMin 2
+focus --class ~.pessoas.Cliente
+field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY
+focus --class ~.pessoas.Funcionario
+field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY
+focus --class ~.pessoas.Representante
+field list --fieldName telefones --type ~.pessoas.Telefone --cardinality ONE_TO_MANY
